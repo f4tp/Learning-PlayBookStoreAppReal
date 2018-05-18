@@ -1,0 +1,35 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /  controllers.HomeController.index()
+# An example controller showing how to use dependency injection
+#GET     /count   controllers.CountController.count()
+# An example controller showing how to write asynchronous code
+#GET     /message     controllers.AsyncController.message()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
+
+#my routes made underneath
+GET /about  controllers.HomeController.about()
+
+#has a variable called name   passing this method a string variable called name
+GET /welcomeAgain/:name   controllers.HomeController.welcomeAgain(name : String)
+
+GET /welcome/:namer/:lastnamer   controllers.HomeController.welcome(namer : String, lastnamer : String)
+
+
+#new books controller class routes
+#any that require arguments have after those that don't, the tutorial flagged up an error with this
+GET /books                  controllers.BooksController.index()
+GET /books/create           controllers.BooksController.create()
+
+GET /books/:idOfBook        controllers.BooksController.show(idOfBook  : Integer)
+GET /books/edit/:idOfBook   controllers.BooksController.edit(idOfBook : Integer)
+
+POST /books/edit            controllers.BooksController.update()
+POST /books/create          controllers.BooksController.save()
+
+GET /books/delete/:idOfBook controllers.BooksController.destroy(idOfBook : Integer)
