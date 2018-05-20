@@ -2,24 +2,15 @@
 @import play.api.data.Form
 @import models.Book
 @import views.html.helper
-
-
-<html>
-    <head>
-        <title> Edit Book</title>
-    </head>
-    <body>
-
-        <h1> Edit Book </h1>
-          @helper.form(action = routes.BooksController.update()){
-              @helper.inputText(bookForm("id"),'id -> "bookForm('id')",'placeholder -> "id", 'value -> "hello")
-              @helper.inputText(bookForm("title"),'id -> "bookForm('title')",'id -> "bookForm('title')",'placeholder -> "id", 'value -> "hello")
-            @helper.inputText(bookForm("price"))
-            @helper.inputText(bookForm("author"))
-            <input type="submit" value="Edit Book"/>
-            }
-
-
-    </body>
-</html>
+@import views.html.Books.layout
+@layout("Edit Book"){
+    <h1> Edit Book </h1>
+    @helper.form(action = routes.BooksController.update()){
+        @helper.inputText(bookForm("id"),'id -> "bookForm('id')",'placeholder -> "id", 'value -> "hello")
+        @helper.inputText(bookForm("title"),'id -> "bookForm('title')",'id -> "bookForm('title')",'placeholder -> "id", 'value -> "hello")
+        @helper.inputText(bookForm("price"))
+        @helper.inputText(bookForm("author"))
+        <input type="submit" value="Edit Book"/>
+    }
+}
 

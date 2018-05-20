@@ -1,2 +1,4 @@
-[error] D:\My Documents\Play Projects\bookstoreapp\app\controllers\BooksController.java:152:1: unreachable statement
-[error]         return TODO;
+[warn] D:\My Documents\Play Projects\bookstoreapp\app\views\Books\index.scala.html:2:26: imported `layout' is permanently hidden by definition of object layout in package Books
+[warn] @import views.html.Books.layout
+[warn]                          ^
+[warn] one warning found
