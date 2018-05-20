@@ -11,10 +11,12 @@
 
     <!-- scala for each loop -->
     @for(book <- books){
-      <a href="#">Book Title = @book.title </a>
+      <a href="@routes.BooksController.show(book.id)">Book Title = @book.title </a>
       <p> Price = @book.price </p>
       <p> Author = @book.author </p>
     }
+
+    <a href="@routes.BooksController.create()">Create Book</a>
 
   </body>
 </html>

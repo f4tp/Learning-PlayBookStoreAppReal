@@ -21,13 +21,13 @@ public class Book {
         this.author = author;
     }
 
-    public Book(String id, String title, String price, String author)
-    {
-        this.id  = Integer.parseInt((id));
-        this.title = title;
-        this.price = Integer.parseInt((price));
-        this.author = author;
-    }
+    //public Book(String id, String title, String price, String author)
+    //{
+       // this.id  = Integer.parseInt((id));
+        //this.title = title;
+        //this.price = Integer.parseInt((price));
+       //this.author = author;
+   // }
 
     private static Set<Book> books;
 

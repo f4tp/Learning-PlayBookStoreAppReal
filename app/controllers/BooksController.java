@@ -1,10 +1,14 @@
 package controllers;
 import play.mvc.*;
 import models.*;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import views.html.Books.*;
 import javax.inject.Inject;
 import play.data.*;
+import play.data.Form;
 import play.mvc.Http;
 
 
@@ -45,12 +49,13 @@ public class BooksController extends Controller {
     //this line of code was the problem - the form contained the stuff but it wouldn't create a
     //book object using the Form.get() method below...
         Form<Book> bookFormInst = formFactory.form(Book.class).bindFromRequest();
+        Book bookinst = bookFormInst.bindFromRequest().get();
 
 
         System.out.println("hellllo :" + bookFormInst.getClass().toString());
         //get book data out of form and compose book object
     //.... here
-        Book bookinst = bookFormInst.get();
+
         System.out.println("I NEEEEED : " + bookFormInst.toString());
         System.out.println("I NEEEEED : " + bookinst.toString());
         System.out.println("the title of the new book is :" + bookinst.title);
@@ -78,29 +83,87 @@ public class BooksController extends Controller {
         String authorFromForm = data.get("author");
         Book bookInToAdd = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
         Book.add(bookInToAdd);
+        //return redirect(routes.BooksController.index());
+    // code works above
+    //new way of doing it
+
+       // Map<String,String> myMap = new HashMap<>();
+
+       // myMap.put("id",bookFormInst.get().id.toString());
+       // myMap.put("id",bookFormInst.get().title);
+       // myMap.put("id",bookFormInst.get().price.toString());
+        //myMap.put("id",bookFormInst.get().author);
+
 
         return redirect(routes.BooksController.index());
     }
 
     public Result edit(Integer idOfBook)
     {
-        return TODO;
+        Book theBook = Book.findById(idOfBook);
+        if(theBook == null)
+        {
+            return notFound("book not found");
+        }
+        else
+        {
+            Form<Book> bookForm = formFactory.form(Book.class).fill(theBook);
+            return ok(edit.render(bookForm));
+        }
     }
 
     public Result update()
     {
-        return TODO;
+
+        play.data.DynamicForm data = formFactory.form().bindFromRequest();
+        Integer idFromForm = Integer.parseInt(data.get("id"));
+        String titleFromForm = data.get("title");
+        Integer priceFromForm = Integer.parseInt(data.get("price"));
+        String authorFromForm = data.get("author");
+        Book bookInToUpdate = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
+        Book oldBookToUpdate = Book.findById(bookInToUpdate.id);
+        if(oldBookToUpdate == null)
+        {
+            return notFound("This book does not exist");
+        }
+        else
+        {
+            oldBookToUpdate.title = bookInToUpdate.title;
+            oldBookToUpdate.author = bookInToUpdate.author;
+            oldBookToUpdate.price = bookInToUpdate.price;
+            return redirect(routes.BooksController.index());
+        }
+
+
     }
 
     public Result destroy(Integer idOfBook)
     {
-        return TODO;
+        Book book = Book.findById(idOfBook);
+        if(book == null)
+        {
+            return notFound("Book not found");
+        }
+        else
+        {
+            Book.remove(book);
+            return redirect(routes.BooksController.index());
+        }
+
     }
 
     //to return book details
     public Result show(Integer idOfBook)
     {
-        return TODO;
+        Book book = Book.findById(idOfBook);
+        if(book == null)
+        {
+            return notFound("Book not found");
+        }
+        else
+        {
+            return ok(show.render(book));
+        }
     }
 
 
