@@ -12,13 +12,15 @@ GET     /  controllers.HomeController.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
 
+#GET     /                  controllers.BooksController.index()
+
 #my routes made underneath
 GET /about  controllers.HomeController.about()
 
 #has a variable called name   passing this method a string variable called name
 GET /welcomeAgain/:name   controllers.HomeController.welcomeAgain(name : String)
 
-GET /welcome/:namer/:lastnamer   controllers.HomeController.welcome(namer : String, lastnamer : String)
+#GET /welcome/:namer/:lastnamer   controllers.HomeController.welcome(namer : String, lastnamer : String)
 
 
 #new books controller class routes

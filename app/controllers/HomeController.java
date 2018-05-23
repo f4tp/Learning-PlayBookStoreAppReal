@@ -1,6 +1,7 @@
 package controllers;
 import play.mvc.*;
-import views.html.Home.*;
+import views.html.*;
+
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -18,7 +19,7 @@ public class HomeController extends Controller {
         int i = 100;
         String name = "RaidxCode";
        // return ok(index.render("This is work that Paul Treadwell has typed in"));
-        return ok("Hello Play");
+        return ok(index.render());
         //practicing with  Git
     }
 
@@ -42,9 +43,9 @@ public class HomeController extends Controller {
    // }
 
     //variables have been declared / used in in view > Home . welcome.scala.html file
-    public Result welcome(String namer, String lastnamer)
+    //public Result welcome(String namer, String lastnamer)
     {
-        return ok(welcome.render(namer, lastnamer));
+        //return ok(welcome.render(namer, lastnamer));
     }
 
 }

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/My Documents/Play Projects/bookstoreapp/conf/routes
-// @DATE:Tue May 15 13:01:01 BST 2018
+// @DATE:Wed May 23 11:53:44 BST 2018
 
 import play.api.mvc.Call
 
@@ -18,19 +18,13 @@ package controllers {
     }
 
   
-    // @LINE:16
+    // @LINE:18
     def about(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "about")
     }
   
     // @LINE:21
-    def welcome(namer:String, lastnamer:String): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "welcome/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("namer", namer)) + "/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("lastnamer", lastnamer)))
-    }
-  
-    // @LINE:19
     def welcomeAgain(name:String): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "welcomeAgain/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("name", name)))
@@ -59,50 +53,50 @@ package controllers {
   
   }
 
-  // @LINE:26
+  // @LINE:28
   class ReverseBooksController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:30
+    // @LINE:32
     def edit(idOfBook:Integer): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "books/edit/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("idOfBook", idOfBook)))
     }
   
-    // @LINE:27
+    // @LINE:29
     def create(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "books/create")
     }
   
-    // @LINE:29
+    // @LINE:31
     def show(idOfBook:Integer): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "books/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("idOfBook", idOfBook)))
     }
   
-    // @LINE:35
+    // @LINE:37
     def destroy(idOfBook:Integer): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "books/delete/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("idOfBook", idOfBook)))
     }
   
-    // @LINE:33
+    // @LINE:35
     def save(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "books/create")
     }
   
-    // @LINE:32
+    // @LINE:34
     def update(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "books/edit")
     }
   
-    // @LINE:26
+    // @LINE:28
     def index(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "books")

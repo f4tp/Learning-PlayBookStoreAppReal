@@ -1,13 +1,23 @@
 package models;
 import java.util.*;
+//import com.avaje.ebean.Model;
+import io.ebean.Model;
+import javax.persistence.*;
 
-public class Book {
+import io.ebean.Finder;
+
+@Entity
+public class Book extends Model {
+    @Id
     public Integer id;
     public String title;
     public Integer price;
     public String author;
 
+    public static Finder<Integer, Book> find = new Finder<>(Book.class);
 
+
+    /*
     public Book()
     {
         //this.id = 25;
@@ -65,5 +75,6 @@ public class Book {
     {
         books.remove(book);
     }
+    */
 
 }

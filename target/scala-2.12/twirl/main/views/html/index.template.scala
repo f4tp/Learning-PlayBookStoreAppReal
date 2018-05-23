@@ -21,21 +21,25 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import play.data._
 import play.core.j.PlayFormsMagicForJava._
+/*1.2*/import views.html.Books.layout
 
 object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template0[play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/():play.twirl.api.HtmlFormat.Appendable = {
+  def apply():play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
+Seq[Any](_display_(/*2.2*/layout("Create Book")/*2.23*/{_display_(Seq[Any](format.raw/*2.24*/("""
+  """),format.raw/*3.3*/("""<div class="container">
+    <div class="jumbotron">
+      <h1> Welcome to BookStore App </h1>
+      <h3> Built using Play Framework 2.6 </h3>
+    </div>
+  </div>
 
-"""),_display_(/*3.2*/main("Welcome to Play")/*3.25*/ {_display_(Seq[Any](format.raw/*3.27*/("""
-  """),format.raw/*4.3*/("""<h1>Welcome to Play!</h1>
-""")))}),format.raw/*5.2*/("""
-"""))
+""")))}))
       }
     }
   }
@@ -51,11 +55,11 @@ Seq[Any](format.raw/*1.4*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Tue May 15 13:01:02 BST 2018
+                  DATE: Wed May 23 12:41:24 BST 2018
                   SOURCE: D:/My Documents/Play Projects/bookstoreapp/app/views/index.scala.html
-                  HASH: e7b67f9143e77fd41846670f700f7278d5705eda
-                  MATRIX: 941->1|1037->3|1067->8|1098->31|1137->33|1167->37|1224->65
-                  LINES: 28->1|33->1|35->3|35->3|35->3|36->4|37->5
+                  HASH: ae1fd10f270b6e7dda0a0a6cca41ab400d47f5a9
+                  MATRIX: 651->1|1068->34|1097->55|1135->56|1165->60
+                  LINES: 24->1|34->2|34->2|34->2|35->3
                   -- GENERATED --
               */
           

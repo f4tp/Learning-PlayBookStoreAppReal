@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/My Documents/Play Projects/bookstoreapp/conf/routes
-// @DATE:Tue May 15 13:01:01 BST 2018
+// @DATE:Wed May 23 11:53:44 BST 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -19,7 +19,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:16
+    // @LINE:18
     def about: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.about",
       """
@@ -30,16 +30,6 @@ package controllers.javascript {
     )
   
     // @LINE:21
-    def welcome: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.welcome",
-      """
-        function(namer0,lastnamer1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "welcome/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("namer", namer0)) + "/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("lastnamer", lastnamer1))})
-        }
-      """
-    )
-  
-    // @LINE:19
     def welcomeAgain: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.welcomeAgain",
       """
@@ -81,7 +71,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:26
+  // @LINE:28
   class ReverseBooksController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -89,7 +79,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:30
+    // @LINE:32
     def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.edit",
       """
@@ -99,7 +89,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:27
+    // @LINE:29
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.create",
       """
@@ -109,7 +99,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:29
+    // @LINE:31
     def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.show",
       """
@@ -119,7 +109,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:35
+    // @LINE:37
     def destroy: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.destroy",
       """
@@ -129,7 +119,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:33
+    // @LINE:35
     def save: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.save",
       """
@@ -139,7 +129,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:32
+    // @LINE:34
     def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.update",
       """
@@ -149,7 +139,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:26
+    // @LINE:28
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.BooksController.index",
       """

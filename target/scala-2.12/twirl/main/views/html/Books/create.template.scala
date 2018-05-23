@@ -63,7 +63,7 @@ Seq[Any](_display_(/*6.2*/layout("Create Book")/*6.23*/{_display_(Seq[Any](forma
 
               /*
                   -- GENERATED --
-                  DATE: Sun May 20 13:23:21 BST 2018
+                  DATE: Mon May 21 12:05:22 BST 2018
                   SOURCE: D:/My Documents/Play Projects/bookstoreapp/app/views/Books/create.scala.html
                   HASH: 6e85bbb720abfb8b6c990d616496a73b4e8f8e56
                   MATRIX: 959->1|1055->26|1088->53|1114->73|1146->99|1205->131|1234->152|1272->153|1301->156|1454->283|1469->289|1523->334|1562->335|1594->341|1609->347|1656->373|1688->379|1703->385|1753->414|1785->420|1800->426|1850->455|1882->461|1897->467|1948->497|1980->502|2055->547|2088->550

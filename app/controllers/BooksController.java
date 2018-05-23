@@ -3,6 +3,7 @@ import play.mvc.*;
 import models.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import views.html.Books.*;
@@ -19,7 +20,12 @@ public class BooksController extends Controller {
 
     public Result index()
     {
-        Set<Book> Mybooks = Book.allBooks();
+        //below method from when DB not in action
+       // Set<Book> Mybooks = Book.allBooks();
+        //return ok(index.render(Mybooks));
+
+        //below is the database variant of above
+        List<Book> Mybooks = Book.find.all();
         return ok(index.render(Mybooks));
     }
 
@@ -50,30 +56,9 @@ public class BooksController extends Controller {
     //book object using the Form.get() method below...
         Form<Book> bookFormInst = formFactory.form(Book.class).bindFromRequest();
         Book bookinst = bookFormInst.bindFromRequest().get();
-
-
-        System.out.println("hellllo :" + bookFormInst.getClass().toString());
-        //get book data out of form and compose book object
-    //.... here
-
-        System.out.println("I NEEEEED : " + bookFormInst.toString());
-        System.out.println("I NEEEEED : " + bookinst.toString());
-        System.out.println("the title of the new book is :" + bookinst.title);
-        System.out.println("the title of the new book is :" + bookinst.id);
-        System.out.println("the title of the new book is :" + bookinst.price);
-        System.out.println("the title of the new book is :" + bookinst.author);
-
-        //System.out.println(bookinst.author.toString());
-         //add the book to the list calling static method in Book model
-       // Book bookInstTwo = new Book();
-
-        //play.data.DynamicForm dataFromForm = play.data.Form.
-
-
-        //Book.add(bookinst);
-
-        //redirect them to the result / where they need to be next
-
+       // Book.add(bookinst);
+        //below for DB - for routine that does not work
+        //bookinst.save();
     // end code from video ///////////////////////////////////////////////////////
 
         play.data.DynamicForm data = formFactory.form().bindFromRequest();
@@ -81,8 +66,19 @@ public class BooksController extends Controller {
         String titleFromForm = data.get("title");
         Integer priceFromForm = Integer.parseInt(data.get("price"));
         String authorFromForm = data.get("author");
-        Book bookInToAdd = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
-        Book.add(bookInToAdd);
+        // Code for the old routine without DB
+        //Book bookInToAdd = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
+        //Book.add(bookInToAdd);
+
+        Book bookInToAddToDB = new Book();
+        bookInToAddToDB.id = idFromForm;
+        bookInToAddToDB.title = titleFromForm;
+        bookInToAddToDB.price = priceFromForm;
+        bookInToAddToDB.author = authorFromForm;
+        //save method must be a super class method as the class now extends the Model class
+        bookInToAddToDB.save();
+
+
         //return redirect(routes.BooksController.index());
     // code works above
     //new way of doing it
@@ -94,13 +90,18 @@ public class BooksController extends Controller {
        // myMap.put("id",bookFormInst.get().price.toString());
         //myMap.put("id",bookFormInst.get().author);
 
-
+        //redirect them to the result / where they need to be next
         return redirect(routes.BooksController.index());
     }
 
     public Result edit(Integer idOfBook)
     {
-        Book theBook = Book.findById(idOfBook);
+        //form old code without DB
+        //Book theBook = Book.findById(idOfBook);
+
+        //routine for DB; .find and .byId must be super class methods now that the class extends
+        //the Model class
+        Book theBook = Book.find.byId(idOfBook);
         if(theBook == null)
         {
             return notFound("book not found");
@@ -120,8 +121,18 @@ public class BooksController extends Controller {
         String titleFromForm = data.get("title");
         Integer priceFromForm = Integer.parseInt(data.get("price"));
         String authorFromForm = data.get("author");
-        Book bookInToUpdate = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
-        Book oldBookToUpdate = Book.findById(bookInToUpdate.id);
+        //old routine wit no DB
+        //Book bookInToUpdate = new Book(idFromForm, titleFromForm,priceFromForm, authorFromForm);
+        Book bookInToUpdate = new Book();
+        bookInToUpdate.id = idFromForm;
+        bookInToUpdate.title = titleFromForm;
+        bookInToUpdate.price = priceFromForm;
+        bookInToUpdate.author = authorFromForm;
+
+        //old routine from old model before DB
+        //Book oldBookToUpdate = Book.findById(bookInToUpdate.id);
+        //new routine with DB
+        Book oldBookToUpdate = Book.find.byId(bookInToUpdate.id);
         if(oldBookToUpdate == null)
         {
             return notFound("This book does not exist");
@@ -131,6 +142,9 @@ public class BooksController extends Controller {
             oldBookToUpdate.title = bookInToUpdate.title;
             oldBookToUpdate.author = bookInToUpdate.author;
             oldBookToUpdate.price = bookInToUpdate.price;
+
+            //this was not present in old model without DB, but is in new one
+            oldBookToUpdate.update();
             return redirect(routes.BooksController.index());
         }
 
@@ -139,14 +153,20 @@ public class BooksController extends Controller {
 
     public Result destroy(Integer idOfBook)
     {
-        Book book = Book.findById(idOfBook);
+        //old routine before DB
+        //Book book = Book.findById(idOfBook);
+        //new routine after DB
+        Book book = Book.find.byId(idOfBook);
         if(book == null)
         {
             return notFound("Book not found");
         }
         else
         {
-            Book.remove(book);
+            //old before DB
+            //Book.remove(book);
+            //new after DB
+            book.delete();
             return redirect(routes.BooksController.index());
         }
 
@@ -155,7 +175,10 @@ public class BooksController extends Controller {
     //to return book details
     public Result show(Integer idOfBook)
     {
-        Book book = Book.findById(idOfBook);
+        //old before db
+        //Book book = Book.findById(idOfBook);
+        //new after DB
+        Book book = Book.find.byId(idOfBook);
         if(book == null)
         {
             return notFound("Book not found");

@@ -29,27 +29,18 @@ object show extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlF
     _display_ {
       {
 /*2.2*/import models.Book
+/*3.2*/import views.html.Books.layout
 
 
 Seq[Any](format.raw/*1.14*/("""
-"""),format.raw/*3.1*/("""
-"""),format.raw/*4.1*/("""<html>
-    <head>
-        <title>"""),_display_(/*6.17*/book/*6.21*/.title),format.raw/*6.27*/("""</title>
-    </head>
-    <body>
+"""),_display_(/*4.2*/layout("Show all books")/*4.26*/{_display_(Seq[Any](format.raw/*4.27*/("""
+    """),format.raw/*5.5*/("""<h1> """),_display_(/*5.11*/book/*5.15*/.title),format.raw/*5.21*/(""" """),format.raw/*5.22*/("""</h1>
+    <p>Price :  """),_display_(/*6.18*/book/*6.22*/.price),format.raw/*6.28*/(""" """),format.raw/*6.29*/("""</p>
+    <p>Author : """),_display_(/*7.18*/book/*7.22*/.author),format.raw/*7.29*/("""</p>
 
-        <h1> """),_display_(/*10.15*/book/*10.19*/.title),format.raw/*10.25*/(""" """),format.raw/*10.26*/("""</h1>
-        <p>Price :  """),_display_(/*11.22*/book/*11.26*/.price),format.raw/*11.32*/(""" """),format.raw/*11.33*/("""</p>
-        <p>Author : """),_display_(/*12.22*/book/*12.26*/.author),format.raw/*12.33*/("""</p>
-
-        <a href=""""),_display_(/*14.19*/routes/*14.25*/.BooksController.edit(book.id)),format.raw/*14.55*/(""""> Edit</a>
-        <a href=""""),_display_(/*15.19*/routes/*15.25*/.BooksController.destroy(book.id)),format.raw/*15.58*/(""""> Delete</a>
-
-
-    </body>
-</html>
-
+    <a href=""""),_display_(/*9.15*/routes/*9.21*/.BooksController.edit(book.id)),format.raw/*9.51*/(""""> Edit</a>
+    <a href=""""),_display_(/*10.15*/routes/*10.21*/.BooksController.destroy(book.id)),format.raw/*10.54*/(""""> Delete</a>
+""")))}),format.raw/*11.2*/("""
 """))
       }
     }
@@ -66,11 +57,11 @@ Seq[Any](format.raw/*1.14*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Sun May 20 12:49:34 BST 2018
+                  DATE: Mon May 21 12:05:23 BST 2018
                   SOURCE: D:/My Documents/Play Projects/bookstoreapp/app/views/Books/show.scala.html
-                  HASH: 93ff9a1352cf1d09e2be2f3193e68788605499cc
-                  MATRIX: 951->1|1036->16|1084->13|1112->36|1140->38|1202->74|1214->78|1240->84|1318->135|1331->139|1358->145|1387->146|1442->174|1455->178|1482->184|1511->185|1565->212|1578->216|1606->223|1659->249|1674->255|1725->285|1783->316|1798->322|1852->355
-                  LINES: 28->1|31->2|34->1|35->3|36->4|38->6|38->6|38->6|42->10|42->10|42->10|42->10|43->11|43->11|43->11|43->11|44->12|44->12|44->12|46->14|46->14|46->14|47->15|47->15|47->15
+                  HASH: 2e5c79d7a5eeee7e6179a5b8bf309edaba702547
+                  MATRIX: 951->1|1036->16|1062->37|1122->13|1150->70|1182->94|1220->95|1252->101|1284->107|1296->111|1322->117|1350->118|1400->142|1412->146|1438->152|1466->153|1515->176|1527->180|1554->187|1602->209|1616->215|1666->245|1720->272|1735->278|1789->311|1835->327
+                  LINES: 28->1|31->2|32->3|35->1|36->4|36->4|36->4|37->5|37->5|37->5|37->5|37->5|38->6|38->6|38->6|38->6|39->7|39->7|39->7|41->9|41->9|41->9|42->10|42->10|42->10|43->11
                   -- GENERATED --
               */
           
